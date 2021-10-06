@@ -3,7 +3,11 @@ Rhubarb's Spring Boot 2 learning project.
 
 ## 10月6日 
 - 创建仓库，初始化。
-- BootStrap 前端样式  https://v3.bootcss.com
+- [BootStrap 前端样式  ](https://v3.bootcss.com)
+- [github OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+
+## 10月7日 
+[发送Post请求](https://square.github.io/okhttp/)
 
 ## 常用 git 命令
 - git commit --amend --no-edit  效果是追加commit，而不作为一次单独的commit。
