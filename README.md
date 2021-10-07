@@ -9,7 +9,7 @@ Rhubarb's Spring Boot 2 learning project.
 ## 10月7日 
 [发送Post请求](https://square.github.io/okhttp/)
 h2 / mysql数据库
-
+[flyway管理数据库](https://flywaydb.org/documentation/getstarted/firststeps/maven)
 
 ### 常用 git 命令
 - git commit --amend --no-edit  效果是追加commit，而不作为一次单独的commit。
@@ -19,6 +19,8 @@ ssh -T git@github.com  测试本机ssh是否可以连接到github。
 
 ### 常用快捷键
 shift + F6 修改变量名。
+Command + E	显示最近打开的文件记录列表
+
 
 ## 异常、错误 产生以及解决
 
