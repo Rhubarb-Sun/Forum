@@ -39,7 +39,7 @@ public class AuthorizeController {
     @Autowired
     private UserMapper userMapper;
 
-    @GetMapping("/callback")
+    @GetMapping("/callback") // github 要求
     public String callback(@RequestParam(name = "code") String code, // SpringBoot 自动在上下文中寻找 request和response
                            HttpServletResponse response) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();

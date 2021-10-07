@@ -23,6 +23,7 @@ public class IndexController {
 
     /**
      * 获取 cookie，有token说明登录过，通过token获取数据库中对应的User记录，放在Session中，方便后端获取。
+     * 没有 token 的话，显示登录按钮。
      * @param request
      * @return
      */
