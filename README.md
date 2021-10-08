@@ -7,19 +7,24 @@ Rhubarb's Spring Boot 2 learning project.
 - [github OAuth](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
 
 ## 10月7日 
-[发送Post请求](https://square.github.io/okhttp/)
-h2 / mysql数据库
-[flyway管理数据库](https://flywaydb.org/documentation/getstarted/firststeps/maven)
+- [发送Post请求](https://square.github.io/okhttp/)
+- h2 / mysql数据库
+- [flyway管理数据库](https://flywaydb.org/documentation/getstarted/firststeps/maven)
 
 ### 常用 git 命令
 - git commit --amend --no-edit  效果是追加commit，而不作为一次单独的commit。
 
 ### 常用 shell 命令
-ssh -T git@github.com  测试本机ssh是否可以连接到github。
+- ssh -T git@github.com  测试本机ssh是否可以连接到github。
 
 ### 常用快捷键
+<<<<<<< HEAD
 shift + F6 全局修改变量名。
 Command + E	显示最近打开的文件记录列表
+=======
+- shift + F6 修改变量名。
+- Command + E	显示最近打开的文件记录列表
+>>>>>>> 27c19ee9f045b2d21fe6f1f44444cbaa4f2fd613
 
 
 ## 异常、错误 产生以及解决
