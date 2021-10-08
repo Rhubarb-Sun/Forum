@@ -39,6 +39,27 @@ public class PublishController {
                             @RequestParam("content") String content,
                             @RequestParam("tag") String tag,
                             HttpServletRequest request, Model model) {
+//        Question q = new Question();
+//        q.setContent(content);
+//        q.setTag(tag);
+//        q.setTitle(title);
+//        model.addAttribute("q", q);
+        model.addAttribute("title", title);
+        model.addAttribute("content", content);
+        model.addAttribute("tag", tag);
+
+        if (title == null || "".equals(title)) {
+            model.addAttribute("error", "Title shall not be empty! ");
+            return "publish";
+        }
+        if (content == null || "".equals(content)) {
+            model.addAttribute("error", "Content shall not be empty! ");
+            return "publish";
+        }
+        if (tag == null || "".equals(tag)) {
+            model.addAttribute("error", "Tag shall not be empty! ");
+            return "publish";
+        }
 
         User user = null;
         Cookie[] cookies = request.getCookies();

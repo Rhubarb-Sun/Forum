@@ -18,7 +18,7 @@ h2 / mysql数据库
 ssh -T git@github.com  测试本机ssh是否可以连接到github。
 
 ### 常用快捷键
-shift + F6 修改变量名。
+shift + F6 全局修改变量名。
 Command + E	显示最近打开的文件记录列表
 
 
