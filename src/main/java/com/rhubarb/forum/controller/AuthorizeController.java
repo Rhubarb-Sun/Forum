@@ -60,6 +60,8 @@ public class AuthorizeController {
             user.setToken(token);
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(gitHubUser.getAvatarUrl());
+            user.setBio(gitHubUser.getBio());
             userMapper.insert(user);
 
             response.addCookie(new Cookie("token", token)); // 将token放在cookie中，再进入index.html页面时，就可以获取。

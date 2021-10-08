@@ -7,20 +7,22 @@
         </script>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/forum.css"/>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
 <body>
 
 <nav class="navbar navbar-default">
+
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">QA问答论坛</span>
+                <span class="sr-only">Diana嘉然论坛</span>
             </button>
-            <a class="navbar-brand" href="#">QA问答论坛</a>
+            <a class="navbar-brand" href="/">Diana嘉然论坛</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,6 +54,70 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+            <div>
+                <h2>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"> 发现</span>
+                </h2>
+            </div>
+
+            <div class="media" th:each="question : ${pagination.questions}">
+<!--                <c:foreach items ="${lis}" var = "li " begin="2" end ="12">
+     ${li}
+</c:foreach>
+     Thymeleaf 遍历格式如下：
+<tr th:each="user : ${userList}">
+      <td th:text="${user.name}">xxx</td>
+</tr>-->
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" th:src="${question.user.avatarUrl}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading" th:text="${question.title}">How to learn Spring Boot 2?</h4>
+                    <span class="text-color-999">[[${question.commentCount}]] 个回复 • [[${question.readCount}]] 次浏览
+                        • [[${question.likeCount}]] 个赞
+                        • <span th:text="${#dates.format(question.gmtModified,'yyyy-MM-dd')}"></span> 创建</span>
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <h3>热门话题</h3>
+            • 常用链接 <br>
+            <br><br><br><br>
+
+            • 社区日报 <br>
+            <br><br><br><br>
+
+            • 扫码关注 <br>
+            <br><br><br><br>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
