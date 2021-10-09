@@ -1,7 +1,6 @@
 package com.rhubarb.forum.controller;
 
 import com.rhubarb.forum.mapper.QuestionMapper;
-import com.rhubarb.forum.mapper.UserMapper;
 import com.rhubarb.forum.model.Question;
 import com.rhubarb.forum.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,13 +24,12 @@ public class PublishController {
     @Autowired
     private QuestionMapper questionMapper;
 
-    @Autowired
-    private UserMapper userMapper;
-
     @GetMapping("/publish")
     public String publish() {
         return "publish";
     }
+
+    // TODO 分页点击别的页码后，model中的内容丢失。
 
     @PostMapping("/publish")
     public String doPublish(@RequestParam("title") String title,
@@ -61,21 +58,7 @@ public class PublishController {
             return "publish";
         }
 
-        User user = null;
-        Cookie[] cookies = request.getCookies();
-        if (cookies !=null && cookies.length != 0 ) {
-            for (Cookie cookie : cookies) {
-                if ("token".equals(cookie.getName())) {
-                    String token = cookie.getValue();
-                    user = userMapper.findByToken(token);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                        //<li class="dropdown" th:if="${session.user != null}">
-                    }
-                    break;
-                }
-            }
-        }
+        User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             model.addAttribute("error", "You haven't login yet!");
             return "publish";

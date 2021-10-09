@@ -50,6 +50,7 @@ public class AuthorizeController {
 
         String accessToken = gitHubProvider.getAccessToken(accessTokenDTO);
         GitHubUser gitHubUser = gitHubProvider.getUser(accessToken);
+
         if (gitHubUser != null) {
 
             User user = new User();
@@ -67,9 +68,7 @@ public class AuthorizeController {
             response.addCookie(new Cookie("token", token)); // 将token放在cookie中，再进入index.html页面时，就可以获取。
 
 //            request.getSession().setAttribute("gitHubUser", gitHubUser);
-            return "redirect:/";
-        } else {
-            return "redirect:/";
         }
+        return "redirect:/";
     }
 }

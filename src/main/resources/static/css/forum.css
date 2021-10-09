@@ -19,3 +19,7 @@ body {
 .media-object {
     width: 40px;
 }
+
+.profile .list-group {
+    margin: 15px;
+}

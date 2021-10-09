@@ -2,26 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Diana嘉然论坛</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
-        </script>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="css/forum.css"/>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <title th:text="${sectionVal} + ' - Diana嘉然论坛'"></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/forum.css"/>
+<!--    <script src="/js/jquery-3.6.0.min.js"></script>-->
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
 
 </head>
 <body>
 
 <div th:include="navigation :: nav"></div>
 
-<div class="container-fluid main">
+<div class="container-fluid main profile">
     <div class="row">
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
             <div>
                 <h2>
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"> 发现</span>
+                    <span aria-hidden="true" th:text="${sectionVal}"></span>
                 </h2>
             </div>
 
@@ -44,42 +44,44 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li th:if="${pagination.showFirst}">
-                        <a href="/?pageNo=1" aria-label="First">
+                        <a th:href="@{'/profile/'+${section}(pageNo=${1})}" aria-label="First">
                             <span aria-hidden="true">&lt;&lt;</span>
                         </a>
                     </li>
                     <li th:if="${pagination.showPrev}">
-                        <a th:href="@{/(pageNo=${pagination.pageNo - 1})}" aria-label="Prev">
+                        <a th:href="@{'/profile/' + ${section}(pageNo=${pagination.pageNo - 1})}" aria-label="Prev">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
                     <li th:each="pageNo : ${pagination.pages}" th:class="${pagination.pageNo == pageNo} ? 'active' : ''">
-                        <a th:href="@{/(pageNo=${pageNo})}" th:text="${pageNo}">
+                        <a th:href="@{/profile/${section}(pageNo=${pageNo})}" th:text="${pageNo}">
                         </a>
                     </li>
                     <li th:if="${pagination.showNext}">
-                        <a th:href="@{/(pageNo=${pagination.pageNo + 1})}" aria-label="Next">
+                        <a th:href="@{/profile/${section}(pageNo=${pagination.pageNo + 1})}" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                     <li th:if="${pagination.showLast}">
-                        <a th:href="@{/(pageNo=${pagination.totalPage})}" aria-label="Last">
+                        <a th:href="@{/profile/${section}(pageNo=${pagination.totalPage})}" aria-label="Last">
                             <span aria-hidden="true">&gt;&gt;</span>
                         </a>
                     </li>
                 </ul>
             </nav>
+
         </div>
+
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            <h3>热门话题</h3>
-            • 常用链接 <br>
-            <br><br><br><br>
-
-            • 社区日报 <br>
-            <br><br><br><br>
-
-            • 扫码关注 <br>
-            <br><br><br><br>
+            <div class="list-group">
+                <a href="/profile/questions"
+                   th:class="${section=='questions'}?'list-group-item active':'list-group-item'">我的提问</a>
+                <a href="/profile/replies"
+                   th:class="${section=='replies'}?'list-group-item active':'list-group-item'">
+                    回复我的
+                    <span class="badge">14</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
