@@ -28,16 +28,30 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * // 根据页码和大小 获取分页信息
+     * @param pageNo 页码。
+     * @param size 单页问题数。
+     * @return
+     */
     public PaginationDTO getList(Integer pageNo, Integer size) {
 
+        PaginationDTO pagination = new PaginationDTO();
+
+        Integer count = questionMapper.count();
+        pagination.setAll(count, pageNo, size);
+
+        if (pageNo > pagination.getTotalPage()) {
+            pageNo = pagination.getTotalPage();
+        }
+        if (pageNo < 1) {
+            pageNo = 1;
+        }
         Integer offset = (pageNo - 1) * size;
 
         List<Question> list = questionMapper.getList(offset, size);
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-
-        PaginationDTO pagination = new PaginationDTO();
-
         for (Question question : list) {
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
@@ -47,10 +61,6 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
         }
         pagination.setQuestions(questionDTOList);
-
-        Integer count = questionMapper.count();
-
-        pagination.setAll(count, pageNo, size);
 
         return pagination;
     }

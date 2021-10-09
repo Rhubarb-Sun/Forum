@@ -22,16 +22,22 @@ public class PaginationDTO {
     private Boolean showNext = true;
     private Integer pageNo;
     private List<Integer> pages = new ArrayList<>();
+    private Integer totalPage;
 
     public void setAll(Integer count, Integer pageNo, Integer size) {
 
-        this.pageNo = pageNo;
-
-        Integer totalPage = count / size;
+        this.totalPage = count / size;
         if (count % size != 0) {
             totalPage ++;
         }
+        if (pageNo < 1) {
+            pageNo = 1;
+        }
+        if (pageNo > totalPage) {
+            pageNo = totalPage;
+        }
 
+        this.pageNo = pageNo;
         pages.add(pageNo);
         for (int i = 1; i <= 3; i++) {
             if (pageNo - i > 0) {
@@ -52,7 +58,7 @@ public class PaginationDTO {
             showFirst = false;
         }
         if (pages.contains(totalPage)) {
-            showFirst = false;
+            showLast = false;
         }
 
 
