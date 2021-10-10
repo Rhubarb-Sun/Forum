@@ -35,4 +35,7 @@ public interface QuestionMapper {
     List<Question> getListByUserId(@Param(value = "user_id") Integer userId,
                                    @Param(value = "offset") Integer offset,
                                    @Param(value = "size")Integer size);
+
+    @Select("select * from question where id = #{id}")
+    Question getQuestionById(String id);
 }

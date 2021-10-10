@@ -23,3 +23,8 @@ body {
 .profile .list-group {
     margin: 15px;
 }
+
+.operations {
+    font-size: 12px;
+    margin-right: 10px;
+}

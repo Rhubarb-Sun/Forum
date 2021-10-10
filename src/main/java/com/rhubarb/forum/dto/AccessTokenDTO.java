@@ -1,7 +1,6 @@
 package com.rhubarb.forum.dto;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Required;
 
 /**
  * @author: sunxun

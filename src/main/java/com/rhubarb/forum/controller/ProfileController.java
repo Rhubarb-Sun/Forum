@@ -24,6 +24,8 @@ public class ProfileController {
     @Autowired
     private QuestionService questionService;
 
+    // TODO 分页点击别的页码后，model中的内容丢失。
+
     @GetMapping("/profile/{section}")
     public String profile(@PathVariable("section") String section,
                           HttpServletRequest request,

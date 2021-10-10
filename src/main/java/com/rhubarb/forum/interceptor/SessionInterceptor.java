@@ -34,11 +34,11 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
                     }
-                    return true;
+                    break;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override

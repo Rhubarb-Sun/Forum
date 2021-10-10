@@ -29,7 +29,6 @@ public class PublishController {
         return "publish";
     }
 
-    // TODO 分页点击别的页码后，model中的内容丢失。
 
     @PostMapping("/publish")
     public String doPublish(@RequestParam("title") String title,
