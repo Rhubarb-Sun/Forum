@@ -14,6 +14,10 @@ Rhubarb's Spring Boot 2 learning project.
 ## 10月8号、10月9号
 分页
 
+## 10月10号
+问题详情页面。
+
+
 ### 常用 git 命令
 - git commit --amend --no-edit  效果是追加commit，而不作为一次单独的commit。
 
@@ -33,4 +37,7 @@ would dispatch back to the current handler URL [/hello] again.
 Check your ViewResolver setup! (Hint: This may be the result 
 of an unspecified view, due to default view name generation.)
 
-缺少 thymeleaf 依赖
+Cause / Solution: 缺少 thymeleaf 依赖
+
+- 无法打开首页
+Cause / Solution: 拦截器拦截。
