@@ -1,10 +1,7 @@
 package com.rhubarb.forum.mapper;
 
 import com.rhubarb.forum.model.Question;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,5 +34,10 @@ public interface QuestionMapper {
                                    @Param(value = "size")Integer size);
 
     @Select("select * from question where id = #{id}")
-    Question getQuestionById(String id);
+    Question getQuestionById(Integer id);
+
+    @Update("update question set title = #{title}, content = #{content}, tag = #{tag}, gmt_modified = #{gmtModified} " +
+            "where id = #{id}")
+    void updateQuestion(Question q);
+
 }

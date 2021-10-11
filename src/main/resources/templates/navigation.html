@@ -31,7 +31,9 @@
                         <a href="/publish">提问</a>
                     </li>
                     <li th:if="${session.user == null}">
-                        <a href="https://github.com/login/oauth/authorize?client_id=ca343122b7612f9c3c7a&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a></li>
+                        <a href="https://github.com/login/oauth/authorize?client_id=ca343122b7612f9c3c7a&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登录</a>
+                    </li>
+<!--TODO 头像显示在顶部的昵称旁-->
                     <li class="dropdown" th:if="${session.user != null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">

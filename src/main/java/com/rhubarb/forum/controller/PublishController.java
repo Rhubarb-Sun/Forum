@@ -1,12 +1,15 @@
 package com.rhubarb.forum.controller;
 
+import com.rhubarb.forum.dto.QuestionDTO;
 import com.rhubarb.forum.mapper.QuestionMapper;
 import com.rhubarb.forum.model.Question;
 import com.rhubarb.forum.model.User;
+import com.rhubarb.forum.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,7 +25,19 @@ import javax.servlet.http.HttpServletRequest;
 public class PublishController {
 
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
+
+    @GetMapping("/publish/{id}")
+    public String editQuestion(@PathVariable("id") Integer id,
+                               Model model) {
+        QuestionDTO question = questionService.getQuestionById(id);
+        model.addAttribute("title", question.getTitle());
+        model.addAttribute("content", question.getContent());
+        model.addAttribute("tag", question.getTag());
+        model.addAttribute("id", question.getId());
+
+        return "publish";
+    }
 
     @GetMapping("/publish")
     public String publish() {
@@ -34,6 +49,7 @@ public class PublishController {
     public String doPublish(@RequestParam("title") String title,
                             @RequestParam("content") String content,
                             @RequestParam("tag") String tag,
+                            @RequestParam(value = "id", required = false) Integer id,
                             HttpServletRequest request, Model model) {
 //        Question q = new Question();
 //        q.setContent(content);
@@ -67,12 +83,15 @@ public class PublishController {
         question.setTitle(title);
         question.setTag(tag);
         question.setContent(content);
-        question.setGmtCreate(System.currentTimeMillis());
-        question.setGmtModified(question.getGmtCreate());
-
+//        question.setCreatorId(user.getId());
+//        question.setGmtCreate(System.currentTimeMillis());
+//        question.setGmtModified(question.getGmtCreate());
         question.setCreatorId(user.getId());
-        questionMapper.createQuestion(question);
+        question.setId(id);
+//        questionMapper.createQuestion(question);
+        questionService.createOrUpdateQuestion(question);
         return "redirect:/";
+
     }
 
 }

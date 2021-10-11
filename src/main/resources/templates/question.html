@@ -38,7 +38,7 @@
                     <i class="glyphicon glyphicon-comment" aria-hidden="true">评论 </i>
                 </a>
 
-                <a class="operations" href="#" th:if="${session.user != null && session.user == question.user}">
+                <a class="operations" th:href="@{ '/publish/' + ${question.id}}" th:if="${session.user != null && session.user == question.user}">
                     <i class="glyphicon glyphicon-pencil" aria-hidden="true">编辑 </i>
                 </a>
             </div>

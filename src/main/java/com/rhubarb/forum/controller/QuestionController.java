@@ -20,7 +20,7 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("/question/{id}")
-    public String question(@PathVariable("id") String id,
+    public String question(@PathVariable("id") Integer id,
                            Model model) {
 
         QuestionDTO questionDTO =  questionService.getQuestionById(id);

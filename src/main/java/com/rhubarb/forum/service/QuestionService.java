@@ -30,8 +30,9 @@ public class QuestionService {
 
     /**
      * // 根据页码和大小 获取分页信息
+     *
      * @param pageNo 页码。
-     * @param size 单页问题数。
+     * @param size   单页问题数。
      * @return
      */
     public PaginationDTO getList(Integer pageNo, Integer size) {
@@ -96,7 +97,7 @@ public class QuestionService {
         return pagination;
     }
 
-    public QuestionDTO getQuestionById(String id) {
+    public QuestionDTO getQuestionById(Integer id) {
 
         Question question = questionMapper.getQuestionById(id);
         QuestionDTO questionDTO = new QuestionDTO();
@@ -106,5 +107,22 @@ public class QuestionService {
         questionDTO.setUser(user);
 
         return questionDTO;
+    }
+
+    public void createOrUpdateQuestion(Question q) {
+        if (q.getId() == null) {
+            long currentTimeMillis = System.currentTimeMillis();
+            q.setGmtCreate(currentTimeMillis);
+            q.setGmtModified(currentTimeMillis);
+
+            questionMapper.createQuestion(q);
+        } else {
+            Question dbQ = questionMapper.getQuestionById(q.getId());
+            if (q.getCreatorId() != dbQ.getCreatorId() || !q.getContent().equals(dbQ.getContent()) ||
+                    !q.getTag().equals(dbQ.getTag()) || !q.getTitle().equals(dbQ.getTitle())) {
+                q.setGmtModified(System.currentTimeMillis());
+                questionMapper.updateQuestion(q);
+            }
+        }
     }
 }
