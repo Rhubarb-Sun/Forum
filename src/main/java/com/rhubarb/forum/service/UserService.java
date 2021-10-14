@@ -2,8 +2,11 @@ package com.rhubarb.forum.service;
 
 import com.rhubarb.forum.mapper.UserMapper;
 import com.rhubarb.forum.model.User;
+import com.rhubarb.forum.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author: sunxun
@@ -22,9 +25,11 @@ public class UserService {
      */
     public void updateOrInsert(User user) {
 
-        User dbUser = userMapper.getUserByAccountId(user.getAccountId());
+        UserExample example = new UserExample();
+        example.createCriteria().andAccountIdEqualTo(user.getAccountId());
+        List<User> users = userMapper.selectByExample(example);
 
-        if (dbUser == null) {
+        if (users.size() == 0) {
 
             long currentTimeMillis = System.currentTimeMillis();
             user.setGmtCreate(currentTimeMillis);
@@ -32,10 +37,15 @@ public class UserService {
 
             userMapper.insert(user);
         } else {
+            User dbUser = users.get(0);
             if (!user.getName().equals(dbUser.getName()) || !user.getAvatarUrl().equals(dbUser.getAvatarUrl())
                     || !user.getBio().equals(dbUser.getBio()) || !user.getToken().equals(dbUser.getToken())) {
                 user.setGmtModified(System.currentTimeMillis());
-                userMapper.update(user);
+                UserExample userExample = new UserExample();
+                userExample.createCriteria()
+                        .andIdEqualTo(dbUser.getId());
+                userMapper.updateByExampleSelective(user, userExample);
+//                userMapper.update(user);
             }
         }
     }

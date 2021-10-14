@@ -48,7 +48,7 @@ public class ProfileController {
             model.addAttribute("sectionVal", "回复我的");
         }
 
-        PaginationDTO pagination = questionService.getListByUserId(userId, pageNo, size); // 获取
+        PaginationDTO pagination = questionService.getListByUserId(user.getId(), pageNo, size); // 获取
         model.addAttribute("pagination", pagination);
 
         return "profile";

@@ -17,12 +17,25 @@ Rhubarb's Spring Boot 2 learning project.
 ## 10月10号
 问题详情页面。
 
+## 10月11号
+问题编辑
+
+## 10月12号
+- [Mybatis Generator](https://mybatis.org/generator/running/runningWithMaven.html)
+```shell script
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```
 
 ### 常用 git 命令
-- git commit --amend --no-edit  效果是追加commit，而不作为一次单独的commit。
+```shell script
+git commit --amend --no-edit  #效果是追加commit，而不作为一次单独的commit。
+```
 
 ### 常用 shell 命令
-- ssh -T git@github.com  测试本机ssh是否可以连接到github。
+```shell script
+ssh -T git@github.com  #测试本机ssh是否可以连接到github。
+```
 
 ### 常用快捷键
 shift + F6 全局修改变量名。
@@ -41,3 +54,11 @@ Cause / Solution: 缺少 thymeleaf 依赖
 
 - 无法打开首页
 Cause / Solution: 拦截器拦截。
+
+- Mybatis Generator 生成别的表
+Cause / Solution: 
+MySql不能正确支持SQL catalogs和schema。如果 在MySql中运行create schema命令，它实际上会创建一个数据库 - 并且JDBC驱动程序将其作为catalogs报告回来。但是MySql语法不支持标准的catalog…table SQL语法。
+因此，最好不要在generator 配置中指定catalog或schema。只需指定表名并在JDBC URL中指定数据库即可。
+如果您使用的是mysql-connector-java的8.x版，生成器可能会尝试为MySql information schemas中的表生成代码。要禁用此行为，请将属性“nullCatalogMeansCurrent = true”添加到JDBC URL。
+
+[点此查看原文](https://blog.csdn.net/hhy107107/article/details/90702077)
