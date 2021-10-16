@@ -22,6 +22,11 @@ Rhubarb's Spring Boot 2 learning project.
 
 ## 10月12号
 - [Mybatis Generator](https://mybatis.org/generator/running/runningWithMaven.html)
+
+## 10月15号、10月16号
+全局跳转错误页面
+回复功能API部分完成。
+
 ```shell script
 mvn flyway:migrate
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
@@ -38,10 +43,11 @@ ssh -T git@github.com  #测试本机ssh是否可以连接到github。
 ```
 
 ### 常用快捷键
-shift + F6 全局修改变量名。
-Command + E	显示最近打开的文件记录列表
-Control + Option + O 优化导包
-
+- shift + F6 全局修改变量名。
+- Command + E	显示最近打开的文件记录列表
+- Control + Option + O 优化导包
+- Option + F7 : Find Usages
+- Command + F9 : 重新编译
 
 ## 异常、错误 产生以及解决
 

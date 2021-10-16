@@ -40,4 +40,6 @@ public interface QuestionMapper {
             "where id = #{id}")
     int updateQuestion(Question q);
 
+    @Update("update question set read_count = #{readCount} + 1 where id = #{id}")
+    void incView(Integer id, Integer readCount);
 }

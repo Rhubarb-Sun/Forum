@@ -23,7 +23,7 @@
             <!--            作者 Rhubarb | 发布于29 分钟前 | 阅读数：8-->
             <div>
                 <span th:text="'作者 ' + ${question.user.name}"></span> |
-                <span th:text="'发布于 ' + ${#dates.format(question.gmtModified,'yyyy-MM-dd')}"></span> |
+                <span th:text="'发布于 ' + ${#dates.format(question.gmtCreate,'yyyy-MM-dd')}"></span> |
                 <span th:text="'阅读数：' + ${question.readCount}"></span>
             </div>
             <hr>
