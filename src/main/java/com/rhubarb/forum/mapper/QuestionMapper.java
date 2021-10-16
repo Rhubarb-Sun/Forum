@@ -38,6 +38,6 @@ public interface QuestionMapper {
 
     @Update("update question set title = #{title}, content = #{content}, tag = #{tag}, gmt_modified = #{gmtModified} " +
             "where id = #{id}")
-    void updateQuestion(Question q);
+    int updateQuestion(Question q);
 
 }
