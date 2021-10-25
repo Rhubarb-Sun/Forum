@@ -9,6 +9,7 @@ import com.rhubarb.forum.model.Comment;
 import com.rhubarb.forum.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author: sunxun
@@ -25,6 +26,7 @@ public class CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
+    @Transactional
     public void insert(Comment comment) {
         if (comment.getParentId() == null) {
             throw new CustomizedException(CustomizedErrorResult.COMMENT_PARENT_NOT_FOUND);

@@ -2,9 +2,11 @@
     margin: 50px;
     background-color: white;
 }
+
 body {
     background-color: #dfdfdf;
 }
+
 .btn-publish {
     float: right;
     margin-bottom: 15px;
@@ -20,6 +22,14 @@ body {
     width: 40px;
 }
 
+.media-heading {
+    padding: 10px;
+}
+
+.media {
+    margin-top: 20px;
+}
+
 .profile .list-group {
     margin: 15px;
 }
@@ -32,4 +42,8 @@ body {
 .jumbotron {
     background-color: #dfdfdf;
     margin: 100px;
+}
+
+.comment-box {
+    margin: 20px 0;
 }

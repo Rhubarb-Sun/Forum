@@ -3,7 +3,6 @@ package com.rhubarb.forum.controller;
 import com.rhubarb.forum.dto.CommentDTO;
 import com.rhubarb.forum.dto.ResultDTO;
 import com.rhubarb.forum.exception.CustomizedErrorResult;
-import com.rhubarb.forum.mapper.CommentMapper;
 import com.rhubarb.forum.model.Comment;
 import com.rhubarb.forum.model.User;
 import com.rhubarb.forum.service.CommentService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 /**
  * @author: sunxun
