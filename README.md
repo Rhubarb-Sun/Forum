@@ -27,6 +27,12 @@ Rhubarb's Spring Boot 2 learning project.
 全局跳转错误页面
 回复功能API部分完成。
 
+## 10月17号
+- [POSTMAN chrome插件实现网页版](chrome-extension://coohjcphdfgbiolnekdpbcijmhambjff/index.html)
+不仅保留了Postman的常用功能，而且可以共享浏览器的session、cookie等信息。
+
+## 10月22号
+
 ```shell script
 mvn flyway:migrate
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

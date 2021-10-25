@@ -2,7 +2,7 @@ package com.rhubarb.forum.service;
 
 import com.rhubarb.forum.dto.PaginationDTO;
 import com.rhubarb.forum.dto.QuestionDTO;
-import com.rhubarb.forum.exception.CustomizedErrorCode;
+import com.rhubarb.forum.exception.CustomizedErrorResult;
 import com.rhubarb.forum.exception.CustomizedException;
 import com.rhubarb.forum.mapper.QuestionMapper;
 import com.rhubarb.forum.mapper.UserMapper;
@@ -103,7 +103,7 @@ public class QuestionService {
 
         Question question = questionMapper.getQuestionById(id);
         if (question == null) {
-            throw new CustomizedException(CustomizedErrorCode.QUESTION_NOT_FOUND);
+            throw new CustomizedException(CustomizedErrorResult.QUESTION_NOT_FOUND);
         }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO);
@@ -129,7 +129,7 @@ public class QuestionService {
                 int updateQuestion = questionMapper.updateQuestion(q);
 
                 if (updateQuestion != 1) {
-                    throw new CustomizedException(CustomizedErrorCode.QUESTION_NOT_FOUND);
+                    throw new CustomizedException(CustomizedErrorResult.QUESTION_NOT_FOUND);
                 }
             }
         }

@@ -5,6 +5,7 @@ package com.rhubarb.forum.exception;
  * @date: 10/16/21 3:08 PM
  * @description:
  */
-public interface ICustomizedErrorCode {
+public interface ICustomizedErrorResult {
     String getErrorMessage();
+    Integer getErrorCode();
 }

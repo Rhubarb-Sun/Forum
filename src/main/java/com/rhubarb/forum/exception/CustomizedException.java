@@ -1,7 +1,5 @@
 package com.rhubarb.forum.exception;
 
-import java.util.Objects;
-
 /**
  * @author: sunxun
  * @date: 10/16/21 3:03 PM
@@ -9,18 +7,20 @@ import java.util.Objects;
  */
 public class CustomizedException extends RuntimeException {
 
+    private Integer code;
     private String message;
 
-    public CustomizedException(String message) {
-        this.message = message;
-    }
-
-    public CustomizedException(ICustomizedErrorCode errorCode) {
-        this.message = errorCode.getErrorMessage();
+    public CustomizedException(ICustomizedErrorResult errorResult) {
+        this.code = errorResult.getErrorCode();
+        this.message = errorResult.getErrorMessage();
     }
 
     @Override
     public String getMessage() {
         return message;
+    }
+
+    public Integer getCode() {
+        return code;
     }
 }
